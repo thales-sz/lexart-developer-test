@@ -7,7 +7,7 @@ services:
       dockerfile: ./Dockerfile
       target: development
     command: npm run start:dev
-    container_name: api-plooral-01
+    container_name: api-lexart-01
     hostname: api01
     environment:
       - PORT=3030
@@ -22,13 +22,11 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-    depends_on:
-      - db
 
   api02:
     <<: *api
     hostname: api02
-    container_name: api-plooral-02
+    container_name: api-lexart-02
     environment:
       - PORT=3030
       - DB_DIALECT=postgres
@@ -53,7 +51,7 @@ services:
 
   # redis:
   #   image: 'redis'
-  #   container_name: 'redis-plooral'
+  #   container_name: 'redis-lexart'
   #   ports:
   #     - '6379:6379'
   #   environment:
@@ -62,4 +60,4 @@ services:
 networks:
   default:
     driver: bridge
-    name: plooral-nginx
+    name: lexart-nginx
