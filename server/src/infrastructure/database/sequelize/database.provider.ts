@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { ConfigService } from '@nestjs/config';
 import { DATABASE_PROVIDER } from '@main/config/constants';
+import { Customer } from '../../../domain/models/customer.model';
 
 const configService = new ConfigService();
 
@@ -15,9 +16,14 @@ export const databaseProviders = [
         username: configService.getOrThrow('DB_USERNAME'),
         password: configService.getOrThrow('DB_PASSWORD'),
         database: configService.getOrThrow('DB_NAME'),
+        dialectOptions: {
+          ssl: true,
+        },
+        models: [Customer],
       });
 
       await sequelize.sync();
+
       return sequelize;
     },
   },
