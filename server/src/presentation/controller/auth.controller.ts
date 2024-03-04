@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { SignInUseCase } from '@app/use-cases/sign-in.usecase';
+import { SignInUseCase } from '@app/use-cases/auth/sign-in.usecase';
 import { SignInDto } from '@domain/dto/sign-in.dto';
-import { SignUpUseCase } from '@app/use-cases/sign-up.usecase';
+import { SignUpUseCase } from '@app/use-cases/auth/sign-up.usecase';
 import { SignUpDto } from '../../domain/dto/sign-up.dto';
 import { Public } from '../../main/config/environment/public-metadata';
 

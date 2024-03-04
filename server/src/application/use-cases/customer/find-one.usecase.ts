@@ -5,10 +5,12 @@ import { Customer } from '@domain/models/customer.model';
 @Injectable()
 export class FindOneCustomerUseCase {
   protected logger: Logger = new Logger(FindOneCustomerUseCase.name);
+
   constructor(
     @Inject(CUSTOMER_REPOSITORY)
     private readonly customerRepository: typeof Customer,
   ) {}
+
   async execute(id: string): Promise<Customer> {
     const customer = await this.customerRepository.findOne({
       where: { id },

@@ -42,13 +42,13 @@ services:
       - "9999:9999"
     restart: always
 
-  # redis:
-  #   image: 'redis'
-  #   container_name: 'redis-lexart'
-  #   ports:
-  #     - '6379:6379'
-  #   environment:
-  #     - ALLOW_EMPTY_PASSWORD=yes
+  redis:
+    image: 'redis'
+    container_name: 'redis-lexart'
+    ports:
+      - '6379:6379'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
 
 networks:
   default:
