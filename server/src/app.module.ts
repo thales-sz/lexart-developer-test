@@ -3,10 +3,14 @@ import { CustomerModule, ProductsModule } from '@infra';
 import { ConfigModule } from '@nestjs/config';
 import Joi from 'joi';
 import { ApplicationModule } from '@app/application.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './presentation/guards/auth.guard';
+import { DomainModule } from './domain/domain.module';
 
 @Module({
   imports: [
     ApplicationModule,
+    DomainModule,
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
@@ -26,6 +30,6 @@ import { ApplicationModule } from '@app/application.module';
     ProductsModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [{ provide: APP_GUARD, useClass: AuthGuard }],
 })
 export class AppModule {}

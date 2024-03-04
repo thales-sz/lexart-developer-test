@@ -1,4 +1,9 @@
-import { Injectable, Logger } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  Logger,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Customer } from '../../models/customer.model';
 import * as bcrypt from 'bcrypt';
@@ -31,5 +36,19 @@ export class AuthService {
 
   public async verify(token: string): Promise<Customer> {
     return this.jwtService.verifyAsync<Customer>(token);
+  }
+
+  public async validateToken(token: string): Promise<Customer> {
+    try {
+      return this.jwtService.verify(token);
+    } catch (error) {
+      if (error.name === 'TokenExpiredError') {
+        throw new ForbiddenException('Token expired');
+      }
+      if (error.name === 'JsonWebTokenError') {
+        throw new UnauthorizedException('Invalid token');
+      }
+      throw new Error(error);
+    }
   }
 }
