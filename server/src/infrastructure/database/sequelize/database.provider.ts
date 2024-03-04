@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
-import { DATABASE_PROVIDER } from '@main/config/constants';
 import { ConfigService } from '@nestjs/config';
+import { DATABASE_PROVIDER } from '@main/config/constants';
 
 const configService = new ConfigService();
 

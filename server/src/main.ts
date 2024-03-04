@@ -22,7 +22,7 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(configService.get('PORT'));
+  await app.listen(configService.getOrThrow('PORT'));
 
   logger.log(`Server is running on PORT: ${await configService.get('PORT')}`);
 }
