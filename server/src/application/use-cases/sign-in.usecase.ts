@@ -1,6 +1,7 @@
 import {
   Inject,
   Injectable,
+  Logger,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -15,6 +16,8 @@ type SignInResponse = {
 
 @Injectable()
 export class SignInUseCase {
+  protected logger: Logger = new Logger(SignInUseCase.name);
+
   constructor(
     private readonly authService: AuthService,
     @Inject(CUSTOMER_REPOSITORY)
@@ -27,6 +30,7 @@ export class SignInUseCase {
     });
 
     if (!customer) {
+      this.logger.error('Customer not found for the email: ' + email);
       throw new NotFoundException('Customer not found');
     }
 
@@ -34,9 +38,9 @@ export class SignInUseCase {
       throw new UnauthorizedException('Invalid password');
     }
 
-    delete customer.password;
+    delete customer.dataValues.password;
 
-    const token = await this.authService.generateToken(customer);
+    const token = await this.authService.generateToken(customer.dataValues);
 
     return { token };
   }

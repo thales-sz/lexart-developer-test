@@ -12,11 +12,11 @@ services:
     environment:
       - PORT=3030
       - DB_DIALECT=postgres
-      - DB_HOST=localhost
+      - DB_HOST=ep-sweet-pine-a4s8bzzs-pooler.us-east-1.aws.neon.tech
       - DB_PORT=5432
-      - DB_USERNAME=root
-      - DB_PASSWORD=root
-      - DB_NAME=lexart-db
+      - DB_USERNAME=default
+      - DB_PASSWORD=kbSDPhw1CL4a
+      - DB_NAME=verceldb
       - TZ=America/Sao_Paulo
     ports:
       - "3030:3030"

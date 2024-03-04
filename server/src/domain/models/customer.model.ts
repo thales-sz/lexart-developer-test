@@ -8,23 +8,24 @@ import {
   IsUUID,
 } from 'sequelize-typescript';
 
-@Table
+@Table({ tableName: 'customers' })
 export class Customer extends Model {
   @PrimaryKey
   @IsUUID(4)
   @Column({
     type: DataType.UUID,
     defaultValue: DataType.UUIDV4,
+    field: 'id',
   })
   public id: string;
 
-  @Column(DataType.STRING(100))
   @IsEmail
+  @Column({ type: DataType.STRING(100), allowNull: false, field: 'email' })
   public email: string;
 
-  @Column(DataType.STRING(100))
+  @Column({ type: DataType.STRING(100), allowNull: false, field: 'name' })
   public name: string;
 
-  @Column(DataType.STRING(32))
+  @Column({ type: DataType.STRING(100), allowNull: false, field: 'password' })
   public password: string;
 }
