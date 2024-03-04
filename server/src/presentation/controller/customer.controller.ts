@@ -1,13 +1,26 @@
-import { Controller, Delete, Get, Param, Patch, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Put,
+} from '@nestjs/common';
 import { FindOneCustomerUseCase } from '@app/use-cases/customer';
 import { Customer } from '@domain/models/customer.model';
 import { FindCustomerUseCase } from '../../application/use-cases/customer/find-all.usecase';
+import { UpdateCustomerUseCase } from '../../application/use-cases/customer/update.usecase';
+import { DeleteCustomerUseCase } from '../../application/use-cases/customer/delete.usecase';
+import { UpdateCustomerDto } from '../../domain/dto/update-customer.dto';
 
 @Controller('customer')
 export class CustomerController {
   constructor(
     private readonly findOneCustomer: FindOneCustomerUseCase,
     private readonly findCustomer: FindCustomerUseCase,
+    private readonly updateCustomer: UpdateCustomerUseCase,
+    private readonly deleteCustomer: DeleteCustomerUseCase,
   ) {}
 
   @Get('/:id')
@@ -21,11 +34,23 @@ export class CustomerController {
   }
 
   @Patch('/:id')
-  async updatePartially() {}
+  async updatePartially(
+    @Param('id') id: string,
+    @Body() updateCustomer: UpdateCustomerDto,
+  ) {
+    return this.updateCustomer.execute(id, updateCustomer);
+  }
 
   @Put('/:id')
-  async update() {}
+  async update(
+    @Param('id') id: string,
+    @Body() updateCustomer: UpdateCustomerDto,
+  ) {
+    return this.updateCustomer.execute(id, updateCustomer);
+  }
 
   @Delete('/:id')
-  async remove() {}
+  async remove(@Param('id') id: string) {
+    return this.deleteCustomer.execute(id);
+  }
 }
