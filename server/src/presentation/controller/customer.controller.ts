@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Put,
@@ -49,6 +51,7 @@ export class CustomerController {
     return this.updateCustomer.execute(id, updateCustomer);
   }
 
+  @HttpCode(HttpStatus.NO_CONTENT)
   @Delete('/:id')
   async remove(@Param('id') id: string) {
     return this.deleteCustomer.execute(id);

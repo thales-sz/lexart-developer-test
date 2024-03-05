@@ -1,9 +1,14 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
+  Patch,
   Post,
+  Put,
   UseInterceptors,
 } from '@nestjs/common';
 import { FindOneProductUseCase } from '@app/use-cases/products/find-one.usecase';
@@ -16,23 +21,28 @@ import {
   CreateProductWithDetailsDto,
 } from '@domain/dto';
 import { DTOValidationInterceptor } from '../interceptor/is-valid-dto.interceptor';
+import { DeleteProductUseCase } from '@app/use-cases/products/delete.usecase';
+import { UpdateProductDto } from '../../domain/dto/update-product.dto';
+import { UpdateProductUseCase } from '../../application/use-cases/products/update.usecase';
 
 @Controller('product')
 export class ProductController {
   constructor(
-    private readonly findOneProductUseCase: FindOneProductUseCase,
-    private readonly findProductUseCase: FindProductUseCase,
-    private readonly createProductUseCase: CreateProductUseCase,
+    private readonly findOneProduct: FindOneProductUseCase,
+    private readonly findProduct: FindProductUseCase,
+    private readonly createProduct: CreateProductUseCase,
+    private readonly deleteProduct: DeleteProductUseCase,
+    private readonly updateProduct: UpdateProductUseCase,
   ) {}
 
   @Get('/:id')
   async findOne(@Param('id') id: string) {
-    return this.findOneProductUseCase.execute(id);
+    return this.findOneProduct.execute(id);
   }
 
   @Get()
   async find(@Body() findProductDto: FindProductDto) {
-    return this.findProductUseCase.execute(findProductDto);
+    return this.findProduct.execute(findProductDto);
   }
 
   @Post()
@@ -44,6 +54,28 @@ export class ProductController {
       | CreateProductDto
       | CreateProductWithDetailsDto,
   ) {
-    return this.createProductUseCase.execute(productDto);
+    return this.createProduct.execute(productDto);
+  }
+
+  @Patch('/:id')
+  async updatePartially(
+    @Param('id') id: string,
+    @Body() updateProductDto: UpdateProductDto,
+  ) {
+    return this.updateProduct.execute(id, updateProductDto);
+  }
+
+  @Put('/:id')
+  async update(
+    @Param('id') id: string,
+    @Body() updateProductDto: UpdateProductDto,
+  ) {
+    return this.updateProduct.execute(id, updateProductDto);
+  }
+
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @Delete('/:id')
+  async remove(@Param('id') id: string) {
+    return this.deleteProduct.execute(id);
   }
 }
