@@ -18,10 +18,10 @@ export class Product extends Model {
   })
   public id: string;
 
-  @Column({ type: DataType.STRING(100), allowNull: false, field: 'email' })
+  @Column({ type: DataType.STRING(100), allowNull: false, field: 'name' })
   public name: string;
 
-  @Column({ type: DataType.DECIMAL(2), allowNull: false, field: 'price' })
+  @Column({ type: DataType.INTEGER, allowNull: false, field: 'price' })
   public price: number;
 
   @Column({ type: DataType.STRING, allowNull: false, field: 'model' })

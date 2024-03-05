@@ -10,6 +10,7 @@ import { UpdateCustomerUseCase } from './use-cases/customer/update.usecase';
 import { PaginationHelper } from '../utils/paginate.helper';
 import { FindOneProductUseCase } from './use-cases/products/find-one.usecase';
 import { FindProductUseCase } from './use-cases/products/find.usecase';
+import { CreateProductUseCase } from './use-cases/products/create.usecase';
 
 @Module({
   imports: [DomainModule, DatabaseModule],
@@ -23,6 +24,7 @@ import { FindProductUseCase } from './use-cases/products/find.usecase';
     UpdateCustomerUseCase,
     FindOneProductUseCase,
     FindProductUseCase,
+    CreateProductUseCase,
   ],
   exports: [
     SignInUseCase,
@@ -33,6 +35,7 @@ import { FindProductUseCase } from './use-cases/products/find.usecase';
     UpdateCustomerUseCase,
     FindOneProductUseCase,
     FindProductUseCase,
+    CreateProductUseCase,
   ],
 })
 export class ApplicationModule {}
