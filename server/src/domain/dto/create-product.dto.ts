@@ -1,37 +1,4 @@
-import { Type } from 'class-transformer';
-import {
-  IsArray,
-  IsNotEmpty,
-  IsNumber,
-  IsObject,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
-
-class Details {
-  @IsString()
-  @IsNotEmpty()
-  brand: string;
-
-  @IsString()
-  @IsNotEmpty()
-  model: string;
-
-  @IsString()
-  @IsNotEmpty()
-  color: string;
-}
-
-class Data {
-  @IsNumber()
-  @IsNotEmpty()
-  price: number;
-
-  @IsString()
-  @IsNotEmpty()
-  color: string;
-}
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateProductDto {
   @IsNotEmpty()
@@ -53,16 +20,4 @@ export class CreateProductDto {
   @IsOptional()
   @IsString()
   color: string;
-
-  @IsOptional()
-  @IsObject()
-  @ValidateNested()
-  @Type(() => Details)
-  details: Details;
-
-  @IsArray()
-  @IsOptional()
-  @ValidateNested({ each: true })
-  @Type(() => Data)
-  data: Data[];
 }

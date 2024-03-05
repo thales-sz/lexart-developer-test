@@ -1,9 +1,21 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  UseInterceptors,
+} from '@nestjs/common';
 import { FindOneProductUseCase } from '@app/use-cases/products/find-one.usecase';
 import { FindProductUseCase } from '@app/use-cases/products/find.usecase';
 import { FindProductDto } from '@domain/dto/find-product.dto';
-import { CreateProductDto } from '@domain/dto/create-product.dto';
 import { CreateProductUseCase } from '@app/use-cases/products/create.usecase';
+import {
+  CreateProductDto,
+  CreateProductWithDataDto,
+  CreateProductWithDetailsDto,
+} from '@domain/dto';
+import { DTOValidationInterceptor } from '../interceptor/is-valid-dto.interceptor';
 
 @Controller('product')
 export class ProductController {
@@ -24,7 +36,14 @@ export class ProductController {
   }
 
   @Post()
-  async create(@Body() productDto: CreateProductDto) {
+  @UseInterceptors(new DTOValidationInterceptor())
+  async create(
+    @Body()
+    productDto:
+      | CreateProductWithDataDto[]
+      | CreateProductDto
+      | CreateProductWithDetailsDto,
+  ) {
     return this.createProductUseCase.execute(productDto);
   }
 }

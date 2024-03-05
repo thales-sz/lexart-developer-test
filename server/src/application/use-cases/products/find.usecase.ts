@@ -55,11 +55,11 @@ export class FindProductUseCase {
       where: whereOptions,
     });
 
-    if (!rows || count >= 0) {
+    if (!rows || count <= 0) {
       this.logger.error('Products not found');
       throw new NotFoundException('Products not found');
     }
 
-    return this.pagination.execute(rows, count, currentPage, itemsPerPage);
+    return this.pagination.execute(rows, currentPage, itemsPerPage, count);
   }
 }
