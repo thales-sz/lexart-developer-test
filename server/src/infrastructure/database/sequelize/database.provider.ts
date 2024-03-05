@@ -1,7 +1,12 @@
 import { Sequelize } from 'sequelize-typescript';
 import { ConfigService } from '@nestjs/config';
-import { DATABASE_PROVIDER } from '@main/config/constants';
-import { Customer } from '../../../domain/models/customer.model';
+import {
+  CUSTOMER_REPOSITORY,
+  DATABASE_PROVIDER,
+  PRODUCT_REPOSITORY,
+} from '@main/config/constants';
+import { Customer } from '@domain/models/customer.model';
+import { Product } from '@domain/models/product.model';
 
 const configService = new ConfigService();
 
@@ -19,12 +24,20 @@ export const databaseProviders = [
         dialectOptions: {
           ssl: true,
         },
-        models: [Customer],
+        models: [Customer, Product],
       });
 
       await sequelize.sync();
 
       return sequelize;
     },
+  },
+  {
+    provide: CUSTOMER_REPOSITORY,
+    useValue: Customer,
+  },
+  {
+    provide: PRODUCT_REPOSITORY,
+    useValue: Product,
   },
 ];

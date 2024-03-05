@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AuthService } from './service/auth/auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { customerProvider } from './models/customer.provider';
 
 @Module({
   imports: [
@@ -17,7 +16,7 @@ import { customerProvider } from './models/customer.provider';
       inject: [ConfigService],
     }),
   ],
-  providers: [AuthService, ...customerProvider],
-  exports: [AuthService, ...customerProvider],
+  providers: [AuthService],
+  exports: [AuthService],
 })
 export class DomainModule {}
