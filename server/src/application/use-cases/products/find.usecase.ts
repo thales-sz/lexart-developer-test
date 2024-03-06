@@ -34,7 +34,7 @@ export class FindProductUseCase {
   }: FindProductDto): Promise<FindProductResponse> {
     const whereOptions: WhereOptions<Product> = {};
 
-    brand ? (whereOptions.brand = { [Op.iLike]: `%${brand}%` }) : undefined;
+    brand ? (whereOptions.brand = { [Op.iLike]: `%${brand}%` }) : null;
     name ? (whereOptions.name = { [Op.iLike]: `%${name}%` }) : null;
     color ? (whereOptions.color = { [Op.iLike]: `%${color}%` }) : null;
     model ? (whereOptions.model = { [Op.iLike]: `%${model}%` }) : null;

@@ -9,6 +9,7 @@ import {
   Patch,
   Post,
   Put,
+  Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { FindOneProductUseCase } from '@app/use-cases/products/find-one.usecase';
@@ -22,8 +23,9 @@ import {
 } from '@domain/dto';
 import { DTOValidationInterceptor } from '../interceptor/is-valid-dto.interceptor';
 import { DeleteProductUseCase } from '@app/use-cases/products/delete.usecase';
-import { UpdateProductDto } from '../../domain/dto/update-product.dto';
-import { UpdateProductUseCase } from '../../application/use-cases/products/update.usecase';
+import { UpdateProductDto } from '@domain/dto/update-product.dto';
+import { UpdateProductUseCase } from '@app/use-cases/products/update.usecase';
+import { Public } from '@main/config/environment/public-metadata';
 
 @Controller('product')
 export class ProductController {
@@ -40,8 +42,9 @@ export class ProductController {
     return this.findOneProduct.execute(id);
   }
 
+  @Public()
   @Get()
-  async find(@Body() findProductDto: FindProductDto) {
+  async find(@Query() findProductDto: FindProductDto) {
     return this.findProduct.execute(findProductDto);
   }
 

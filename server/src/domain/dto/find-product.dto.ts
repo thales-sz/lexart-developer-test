@@ -1,4 +1,9 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumberString,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class FindProductDto {
   @IsOptional()
@@ -6,11 +11,11 @@ export class FindProductDto {
   name: string;
 
   @IsOptional()
-  @IsNumber()
+  @IsNumberString()
   minPrice: number;
 
   @IsOptional()
-  @IsNumber()
+  @IsNumberString()
   maxPrice: number;
 
   @IsOptional()
@@ -25,11 +30,11 @@ export class FindProductDto {
   @IsString()
   model: string;
 
-  @IsNumber()
+  @IsNumberString()
   @IsNotEmpty()
   itemsPerPage: number;
 
-  @IsNumber()
+  @IsNumberString()
   @IsNotEmpty()
   currentPage: number;
 }
