@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { CUSTOMER_REPOSITORY } from '@main/config/constants';
-import { Customer } from '@domain/models/customer.model';
+import { CUSTOMER_REPOSITORY } from 'src/main/config/constants';
+import { Customer } from 'src/domain/models/customer.model';
 
 @Injectable()
 export class FindOneCustomerUseCase {
@@ -9,7 +9,7 @@ export class FindOneCustomerUseCase {
   constructor(
     @Inject(CUSTOMER_REPOSITORY)
     private readonly customerRepository: typeof Customer,
-  ) {}
+  ) { }
 
   async execute(id: string): Promise<Customer> {
     const customer = await this.customerRepository.findOne({

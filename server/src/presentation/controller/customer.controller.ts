@@ -9,8 +9,8 @@ import {
   Patch,
   Put,
 } from '@nestjs/common';
-import { FindOneCustomerUseCase } from '@app/use-cases/customer';
-import { Customer } from '@domain/models/customer.model';
+import { FindOneCustomerUseCase } from 'api/application/use-cases/customer';
+import { Customer } from 'api/domain/models/customer.model';
 import { FindCustomerUseCase } from '../../application/use-cases/customer/find-all.usecase';
 import { UpdateCustomerUseCase } from '../../application/use-cases/customer/update.usecase';
 import { DeleteCustomerUseCase } from '../../application/use-cases/customer/delete.usecase';
@@ -23,7 +23,7 @@ export class CustomerController {
     private readonly findCustomer: FindCustomerUseCase,
     private readonly updateCustomer: UpdateCustomerUseCase,
     private readonly deleteCustomer: DeleteCustomerUseCase,
-  ) {}
+  ) { }
 
   @Get('/:id')
   async findOne(@Param('id') id: string): Promise<Customer> {

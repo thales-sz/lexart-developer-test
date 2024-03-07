@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { CustomerModule, ProductsModule } from '@infra';
+import { CustomerModule, ProductsModule } from 'src/infrastructure';
 import { ConfigModule } from '@nestjs/config';
 import Joi from 'joi';
-import { ApplicationModule } from '@app/application.module';
+import { ApplicationModule } from 'src/application/application.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './presentation/guards/auth.guard';
 import { DomainModule } from './domain/domain.module';
@@ -32,4 +32,4 @@ import { DomainModule } from './domain/domain.module';
   controllers: [],
   providers: [{ provide: APP_GUARD, useClass: AuthGuard }],
 })
-export class AppModule {}
+export class AppModule { }

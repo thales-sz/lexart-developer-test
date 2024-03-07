@@ -1,8 +1,8 @@
 import { ConflictException, Inject, Injectable } from '@nestjs/common';
-import { AuthService } from '@domain/service/auth/auth.service';
-import { CUSTOMER_REPOSITORY } from '@main/config/constants';
-import { Customer } from '@domain/models/customer.model';
-import { SignUpDto } from '@domain/dto/sign-up.dto';
+import { AuthService } from 'src/domain/service/auth/auth.service';
+import { CUSTOMER_REPOSITORY } from 'src/main/config/constants';
+import { Customer } from 'src/domain/models/customer.model';
+import { SignUpDto } from 'src/domain/dto/sign-up.dto';
 
 type SignUpResponse = {
   customer: Customer;
@@ -14,7 +14,7 @@ export class SignUpUseCase {
     private readonly authService: AuthService,
     @Inject(CUSTOMER_REPOSITORY)
     private readonly customerRepository: typeof Customer,
-  ) {}
+  ) { }
 
   async execute(customerDto: SignUpDto): Promise<SignUpResponse> {
     const customer = await this.customerRepository.findOne({

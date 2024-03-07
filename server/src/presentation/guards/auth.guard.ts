@@ -5,16 +5,16 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Request } from 'express';
-import { IS_PUBLIC_KEY } from '@main/config/environment/public-metadata';
+import { IS_PUBLIC_KEY } from 'src/main/config/environment/public-metadata';
 import { Reflector } from '@nestjs/core';
-import { AuthService } from '@domain/service/auth/auth.service';
+import { AuthService } from 'src/domain/service/auth/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
     private readonly reflector: Reflector,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [

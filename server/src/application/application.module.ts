@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { SignInUseCase } from './use-cases/auth/sign-in.usecase';
-import { DomainModule } from '@domain/domain.module';
-import { DatabaseModule } from '@infra/database/database.module';
+import { DomainModule } from 'src/domain/domain.module';
+import { DatabaseModule } from 'src/infrastructure/database/database.module';
 import { SignUpUseCase } from './use-cases/auth/sign-up.usecase';
 import { FindOneCustomerUseCase } from './use-cases/customer';
 import { FindCustomerUseCase } from './use-cases/customer/find-all.usecase';
@@ -44,4 +44,4 @@ import { UpdateProductUseCase } from './use-cases/products/update.usecase';
     UpdateProductUseCase,
   ],
 })
-export class ApplicationModule {}
+export class ApplicationModule { }

@@ -10,7 +10,7 @@ import {
   CreateProductDto,
   CreateProductWithDataDto,
   CreateProductWithDetailsDto,
-} from '@domain/dto';
+} from 'src/domain/dto';
 
 @Injectable()
 export class DTOValidationInterceptor implements NestInterceptor {

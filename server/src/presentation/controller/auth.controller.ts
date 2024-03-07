@@ -1,7 +1,7 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { SignInUseCase } from '@app/use-cases/auth/sign-in.usecase';
-import { SignInDto } from '@domain/dto/sign-in.dto';
-import { SignUpUseCase } from '@app/use-cases/auth/sign-up.usecase';
+import { SignInUseCase } from 'api/application/use-cases/auth/sign-in.usecase';
+import { SignInDto } from 'api/domain/dto/sign-in.dto';
+import { SignUpUseCase } from 'api/application/use-cases/auth/sign-up.usecase';
 import { SignUpDto } from '../../domain/dto/sign-up.dto';
 import { Public } from '../../main/config/environment/public-metadata';
 import { ValidateTokenDto } from '../../domain/dto/validate-token.dto';
@@ -13,7 +13,7 @@ export class AuthController {
     private readonly signInUseCase: SignInUseCase,
     private readonly signUpUseCase: SignUpUseCase,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
 
   @HttpCode(HttpStatus.OK)
   @Public()

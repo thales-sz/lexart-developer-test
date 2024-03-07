@@ -9,7 +9,7 @@ import { api } from "../../api/api"
 import SkeletonLoading from "../../components/skeleton-loading"
 import { Product } from "../../types/products.type"
 import { getRandomImage } from "../../utils/get-random-image"
-import { useForm } from 'react-hook-form'
+import { useForm } from '../../../node_modules/react-hook-form/dist'
 import { AxiosError } from "axios"
 
 type ProductResponse = {

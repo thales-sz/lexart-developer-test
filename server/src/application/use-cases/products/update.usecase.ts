@@ -1,7 +1,7 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { UpdateProductDto } from '@domain/dto/update-product.dto';
-import { PRODUCT_REPOSITORY } from '@main/config/constants';
-import { Product } from '@domain/models/product.model';
+import { UpdateProductDto } from 'src/domain/dto/update-product.dto';
+import { PRODUCT_REPOSITORY } from 'src/main/config/constants';
+import { Product } from 'src/domain/models/product.model';
 
 @Injectable()
 export class UpdateProductUseCase {
@@ -10,7 +10,7 @@ export class UpdateProductUseCase {
   constructor(
     @Inject(PRODUCT_REPOSITORY)
     private readonly productRepository: typeof Product,
-  ) {}
+  ) { }
 
   async execute(id: string, updateDto: UpdateProductDto): Promise<void> {
     const product = await this.productRepository.findOne({ where: { id } });

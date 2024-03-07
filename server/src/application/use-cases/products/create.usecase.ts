@@ -1,11 +1,11 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { PRODUCT_REPOSITORY } from '@main/config/constants';
-import { Product } from '@domain/models/product.model';
+import { PRODUCT_REPOSITORY } from 'src/main/config/constants';
+import { Product } from 'src/domain/models/product.model';
 import {
   CreateProductDto,
   CreateProductWithDataDto,
   CreateProductWithDetailsDto,
-} from '@domain/dto';
+} from 'src/domain/dto';
 
 @Injectable()
 export class CreateProductUseCase {
@@ -14,7 +14,7 @@ export class CreateProductUseCase {
   constructor(
     @Inject(PRODUCT_REPOSITORY)
     private readonly productRepository: typeof Product,
-  ) {}
+  ) { }
 
   async execute(
     productDto:

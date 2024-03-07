@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { PRODUCT_REPOSITORY } from '@main/config/constants';
-import { Product } from '@domain/models/product.model';
+import { PRODUCT_REPOSITORY } from 'src/main/config/constants';
+import { Product } from 'src/domain/models/product.model';
 import { FindProductDto } from '../../../domain/dto/find-product.dto';
 import { Op, WhereOptions } from 'sequelize';
 import { PaginationHelper } from '../../../utils/paginate.helper';
@@ -20,7 +20,7 @@ export class FindProductUseCase {
     @Inject(PRODUCT_REPOSITORY)
     private readonly productRepository: typeof Product,
     private readonly pagination: PaginationHelper<Product>,
-  ) {}
+  ) { }
 
   async execute({
     brand,
@@ -40,11 +40,11 @@ export class FindProductUseCase {
     model ? (whereOptions.model = { [Op.iLike]: `%${model}%` }) : null;
     minPrice && maxPrice
       ? (whereOptions.price = {
-          [Op.and]: {
-            [Op.gte]: minPrice,
-            [Op.lte]: maxPrice,
-          },
-        })
+        [Op.and]: {
+          [Op.gte]: minPrice,
+          [Op.lte]: maxPrice,
+        },
+      })
       : null;
 
     console.log('whereOptions', whereOptions);

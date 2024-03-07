@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AuthController } from '@presentation/controller/auth.controller';
-import { ApplicationModule } from '@app/application.module';
-import { CustomerController } from '@presentation/controller/customer.controller';
+import { AuthController } from 'api/presentation/controller/auth.controller';
+import { ApplicationModule } from 'api/application/application.module';
+import { CustomerController } from 'api/presentation/controller/customer.controller';
 import { DomainModule } from '../../domain/domain.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import {
@@ -39,4 +39,4 @@ import { redisStore } from 'cache-manager-redis-store';
     },
   ],
 })
-export class CustomerModule {}
+export class CustomerModule { }

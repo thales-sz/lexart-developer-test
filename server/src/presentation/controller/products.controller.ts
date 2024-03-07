@@ -12,20 +12,20 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common';
-import { FindOneProductUseCase } from '@app/use-cases/products/find-one.usecase';
-import { FindProductUseCase } from '@app/use-cases/products/find.usecase';
-import { FindProductDto } from '@domain/dto/find-product.dto';
-import { CreateProductUseCase } from '@app/use-cases/products/create.usecase';
+import { FindOneProductUseCase } from 'src/application/use-cases/products/find-one.usecase';
+import { FindProductUseCase } from 'src/application/use-cases/products/find.usecase';
+import { FindProductDto } from 'src/domain/dto/find-product.dto';
+import { CreateProductUseCase } from 'src/application/use-cases/products/create.usecase';
 import {
   CreateProductDto,
   CreateProductWithDataDto,
   CreateProductWithDetailsDto,
-} from '@domain/dto';
+} from 'src/domain/dto';
 import { DTOValidationInterceptor } from '../interceptor/is-valid-dto.interceptor';
-import { DeleteProductUseCase } from '@app/use-cases/products/delete.usecase';
-import { UpdateProductDto } from '@domain/dto/update-product.dto';
-import { UpdateProductUseCase } from '@app/use-cases/products/update.usecase';
-import { Public } from '@main/config/environment/public-metadata';
+import { DeleteProductUseCase } from 'src/application/use-cases/products/delete.usecase';
+import { UpdateProductDto } from 'src/domain/dto/update-product.dto';
+import { UpdateProductUseCase } from 'src/application/use-cases/products/update.usecase';
+import { Public } from 'src/main/config/environment/public-metadata';
 
 @Controller('product')
 export class ProductController {
@@ -35,7 +35,7 @@ export class ProductController {
     private readonly createProduct: CreateProductUseCase,
     private readonly deleteProduct: DeleteProductUseCase,
     private readonly updateProduct: UpdateProductUseCase,
-  ) {}
+  ) { }
 
   @Get('/:id')
   async findOne(@Param('id') id: string) {

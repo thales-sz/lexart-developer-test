@@ -4,9 +4,9 @@ import {
   CUSTOMER_REPOSITORY,
   DATABASE_PROVIDER,
   PRODUCT_REPOSITORY,
-} from '@main/config/constants';
-import { Customer } from '@domain/models/customer.model';
-import { Product } from '@domain/models/product.model';
+} from 'src/main/config/constants';
+import { Customer } from 'src/domain/models/customer.model';
+import { Product } from 'src/domain/models/product.model';
 
 const configService = new ConfigService();
 
