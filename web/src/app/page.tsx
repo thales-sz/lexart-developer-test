@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from 'next/navigation'
-import React, { use } from 'react'
+import React from 'react'
 
 function Index() {
   const route = useRouter()
