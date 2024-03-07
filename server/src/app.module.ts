@@ -6,6 +6,7 @@ import { ApplicationModule } from 'src/application/application.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './presentation/guards/auth.guard';
 import { DomainModule } from './domain/domain.module';
+import { HealthController } from './presentation/controller/health.controller';
 
 @Module({
   imports: [
@@ -29,7 +30,7 @@ import { DomainModule } from './domain/domain.module';
     CustomerModule,
     ProductsModule,
   ],
-  controllers: [],
+  controllers: [HealthController],
   providers: [{ provide: APP_GUARD, useClass: AuthGuard }],
 })
 export class AppModule {}
