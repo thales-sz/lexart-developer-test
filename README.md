@@ -76,7 +76,3 @@ Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demons
 - `POST /auth/signin`: Autentica um usuário.
 
 Para utilizar esses endpoints, é necessário autenticação.
-
-## Conclusão
-
-O Lexart Developer Test é uma oportunidade para demonstrar suas habilidades em desenvolvimento fullstack. Sinta-se à vontade para explorar e expandir este projeto conforme necessário. Boa sorte!
