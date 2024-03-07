@@ -48,6 +48,17 @@ Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demons
    https://lexart-developer-test.vercel.app/home
    ```
 
+3.1. Tive dificuldades na hora de fazer o deploy do backend, por isso, a aplicação está rodando localmente. Caso queira rodar a aplicação localmente, siga os passos abaixo:
+   ```sh
+   cd lexart-developer-test/web
+   npm install
+   npm run start
+   ```
+   A aplicação estará disponível em:
+   ```sh
+   http://localhost:3000
+   ```
+
 4. Caso queira fazer requisições diretamente para a API, utilize o endereço:
    ```sh
     http://localhost:9999
