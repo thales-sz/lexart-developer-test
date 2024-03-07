@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demonstrar suas habilidades como desenvolvedor fullstack. Aqui, você encontrará uma API completa para gerenciar produtos, incluindo operações como seleção, adição e exclusão de produtos. Além disso, há um sistema de autenticação e autorização para criar novos usuários.
+Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demonstrar minhas habilidades como desenvolvedor fullstack. Aqui, você encontrará uma API completa para gerenciar produtos, incluindo operações como seleção, adição e exclusão de produtos. Além disso, há um sistema de autenticação e autorização para criar novos usuários.
 
 ## Funcionalidades
 
@@ -29,6 +29,7 @@ Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demons
 
 ### Pré-requisitos
 - Node.js
+- Docker
 
 ### Passos
 

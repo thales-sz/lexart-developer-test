@@ -25,7 +25,7 @@ import { HealthController } from './presentation/controller/health.controller';
         DB_PASSWORD: Joi.string().required(),
         DB_NAME: Joi.string().required(),
       }),
-      envFilePath: '.env',
+      envFilePath: './.env',
     }),
     CustomerModule,
     ProductsModule,
