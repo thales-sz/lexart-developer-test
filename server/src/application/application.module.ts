@@ -44,4 +44,4 @@ import { UpdateProductUseCase } from './use-cases/products/update.usecase';
     UpdateProductUseCase,
   ],
 })
-export class ApplicationModule { }
+export class ApplicationModule {}

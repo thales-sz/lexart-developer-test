@@ -32,4 +32,4 @@ import { DomainModule } from './domain/domain.module';
   controllers: [],
   providers: [{ provide: APP_GUARD, useClass: AuthGuard }],
 })
-export class AppModule { }
+export class AppModule {}
