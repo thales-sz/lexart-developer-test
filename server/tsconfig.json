@@ -42,6 +42,12 @@
       "@presentation/*": [
         "src/presentation/*"
       ],
+      "@main": [
+        "src/main"
+      ],
+      "@main/*": [
+        "src/main/*"
+      ],
     }
   }
 }
