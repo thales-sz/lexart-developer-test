@@ -4,12 +4,12 @@
 import { useMutation } from "@tanstack/react-query"
 import React from "react"
 import Link from "next/link"
-import { MouseEventHandler, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { api } from "../../api/api"
 import SkeletonLoading from "../../components/skeleton-loading"
 import { Product } from "../../types/products.type"
 import { getRandomImage } from "../../utils/get-random-image"
-import { SubmitHandler, useForm } from "react-hook-form"
+import { useForm } from 'react-hook-form'
 import { AxiosError } from "axios"
 
 type ProductResponse = {
