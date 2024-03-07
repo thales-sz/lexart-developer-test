@@ -9,12 +9,12 @@ import {
   Patch,
   Put,
 } from '@nestjs/common';
-import { FindOneCustomerUseCase } from 'api/application/use-cases/customer';
-import { Customer } from 'api/domain/models/customer.model';
-import { FindCustomerUseCase } from '../../application/use-cases/customer/find-all.usecase';
-import { UpdateCustomerUseCase } from '../../application/use-cases/customer/update.usecase';
-import { DeleteCustomerUseCase } from '../../application/use-cases/customer/delete.usecase';
-import { UpdateCustomerDto } from '../../domain/dto/update-customer.dto';
+import { FindOneCustomerUseCase } from '@app/use-cases/customer';
+import { Customer } from '@domain/models/customer.model';
+import { FindCustomerUseCase } from '@app/use-cases/customer/find-all.usecase';
+import { UpdateCustomerUseCase } from '@app/use-cases/customer/update.usecase';
+import { DeleteCustomerUseCase } from '@app/use-cases/customer/delete.usecase';
+import { UpdateCustomerDto } from '@domain/dto/update-customer.dto';
 
 @Controller('customer')
 export class CustomerController {
@@ -23,7 +23,7 @@ export class CustomerController {
     private readonly findCustomer: FindCustomerUseCase,
     private readonly updateCustomer: UpdateCustomerUseCase,
     private readonly deleteCustomer: DeleteCustomerUseCase,
-  ) { }
+  ) {}
 
   @Get('/:id')
   async findOne(@Param('id') id: string): Promise<Customer> {
