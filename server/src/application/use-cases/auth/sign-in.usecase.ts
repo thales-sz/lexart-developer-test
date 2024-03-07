@@ -22,7 +22,7 @@ export class SignInUseCase {
     private readonly authService: AuthService,
     @Inject(CUSTOMER_REPOSITORY)
     private readonly customerRepository: typeof Customer,
-  ) { }
+  ) {}
 
   async execute({ email, password }: SignInDto): Promise<SignInResponse> {
     const customer = await this.customerRepository.findOne({

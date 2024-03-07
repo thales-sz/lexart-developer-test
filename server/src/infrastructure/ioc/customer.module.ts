@@ -10,10 +10,12 @@ import {
 } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-redis-store';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { DomainModule } from '../../domain/domain.module';
 
 @Module({
   imports: [
     ApplicationModule,
+    DomainModule,
     CacheModule.registerAsync({
       isGlobal: true,
       imports: [ConfigModule],

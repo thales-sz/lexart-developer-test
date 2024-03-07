@@ -1,0 +1,1 @@
+export const availableColors = ['red', 'purple', 'black', 'gold', 'silver', 'blue', 'green', 'white']
