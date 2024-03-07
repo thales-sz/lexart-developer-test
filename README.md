@@ -37,35 +37,22 @@ Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demons
    git clone https://github.com/thales-sz/lexart-developer-test.git
    ```
 
-2. Instale as dependências do backend:
+2. Inicie a aplicação backend:
    ```sh
    cd lexart-developer-test/server
-   npm install
+   docker compose up -d
    ```
 
-3. Inicie o servidor do backend:
+3. Acesse a aplicação em:
    ```sh
-   npm start
+   https://lexart-developer-test.vercel.app/home
    ```
 
-4. Em outro terminal, navegue até o diretório do frontend:
+4. Caso queira fazer requisições diretamente para a API, utilize o endereço:
    ```sh
-   cd ../web
+    http://localhost:9999
    ```
 
-5. Instale as dependências do frontend:
-   ```sh
-   npm install
-   ```
-
-6. Inicie o servidor de desenvolvimento do frontend:
-   ```sh
-   npm start
-   ```
-
-7. Acesse o aplicativo em seu navegador: `http://localhost:3000`
-
-8. Caso queira acessar o diretamente o deploy: [Lexart Developer Test](https://lexart-developer-test.vercel.app/home)
 
 ## API Endpoints
 
