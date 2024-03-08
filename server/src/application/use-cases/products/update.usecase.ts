@@ -10,7 +10,7 @@ export class UpdateProductUseCase {
   constructor(
     @Inject(PRODUCT_REPOSITORY)
     private readonly productRepository: typeof Product,
-  ) { }
+  ) {}
 
   async execute(id: string, updateDto: UpdateProductDto): Promise<void> {
     const product = await this.productRepository.findOne({ where: { id } });

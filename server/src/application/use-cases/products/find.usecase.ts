@@ -20,7 +20,7 @@ export class FindProductUseCase {
     @Inject(PRODUCT_REPOSITORY)
     private readonly productRepository: typeof Product,
     private readonly pagination: PaginationHelper<Product>,
-  ) { }
+  ) {}
 
   async execute({
     brand,
@@ -40,11 +40,11 @@ export class FindProductUseCase {
     model ? (whereOptions.model = { [Op.iLike]: `%${model}%` }) : null;
     minPrice && maxPrice
       ? (whereOptions.price = {
-        [Op.and]: {
-          [Op.gte]: minPrice,
-          [Op.lte]: maxPrice,
-        },
-      })
+          [Op.and]: {
+            [Op.gte]: minPrice,
+            [Op.lte]: maxPrice,
+          },
+        })
       : null;
 
     console.log('whereOptions', whereOptions);
