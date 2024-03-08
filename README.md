@@ -27,6 +27,13 @@ Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demons
 
 ## Como Utilizar
 
+Acesse a aplicação em:
+   ```sh
+   https://lexart-developer-test.vercel.app/home
+   ```
+
+## Rodando Localmente
+
 ### Pré-requisitos
 - Node.js
 - Docker
@@ -44,17 +51,13 @@ Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demons
    docker compose up -d
    ```
 
-3. Acesse a aplicação em:
-   ```sh
-   https://lexart-developer-test.vercel.app/home
-   ```
-
-3.1. Tive dificuldades na hora de fazer o deploy do backend, por isso, a aplicação está rodando localmente. Caso queira rodar a aplicação localmente, siga os passos abaixo:
+3. Inicie a aplicação frontend:
    ```sh
    cd lexart-developer-test/web
    npm install
    npm run start
    ```
+
    A aplicação estará disponível em:
    ```sh
    http://localhost:3000
