@@ -76,4 +76,4 @@ Bem-vindo ao Lexart Developer Test! Este projeto é uma oportunidade para demons
 - `POST /auth/signup`: Cria um novo usuário.
 - `POST /auth/signin`: Autentica um usuário.
 
-Para utilizar esses endpoints, é necessário autenticação.
+Para utilizar os endpoints de cadastro, remoção e atualização de produtos, é necessário autenticação.
