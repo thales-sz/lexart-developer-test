@@ -3,7 +3,7 @@
 import { useMutation } from '@tanstack/react-query'
 import React from 'react'
 import { api } from '../../api/api';
-import { useForm } from '../../../node_modules/react-hook-form/dist';
+import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
 type LoginInput = {
