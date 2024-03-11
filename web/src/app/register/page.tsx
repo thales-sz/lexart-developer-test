@@ -14,17 +14,17 @@ type RegisterInput = {
 
 function Register() {
   const router = useRouter()
-  const { register, handleSubmit, getValues } = useForm<RegisterInput>()
+  const { register, handleSubmit, getValues, watch, formState: { errors } } = useForm<RegisterInput>()
   const { data, mutate } = useMutation({
     mutationKey: ['signin'],
     mutationFn: async (data: { email: string, password: string }) => {
-      return api.post('/auth/signup', { ...data })
+      return api.post('/auth/', { ...data })
     }
   })
 
-    if (data?.status === 201) {
-        router.push('/login')
-    }
+    // if (data?.status === 201) {
+    //     router.push('/login')
+    // }
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden bg-gray-200">
@@ -43,6 +43,7 @@ function Register() {
                         <input
                             type="text"
                             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            required
                             {...register('name')}
                         />
                     </div>
@@ -56,6 +57,7 @@ function Register() {
                         <input
                             type="email"
                             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            required
                             {...register('email')}
                         />
                     </div>
@@ -69,8 +71,29 @@ function Register() {
                         <input
                             type="password"
                             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                            {...register('password')}
+                            required
+                            {...register('password', {
+                                minLength: {
+                                    value: 8,
+                                    message: 'Password must have at least 8 characters',
+                                },
+                                validate: (value: string) => {
+                                    if (!value.match(/[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/)) {
+                                        return "Your password must contain at least one special character";
+                                    }
+                                    if (!value.match(/[A-Z]/)) {
+                                        return "Your password must contain at least one uppercase letter";
+                                    }
+                                    if (!value.match(/[a-z]/)) {
+                                        return "Your password must contain at least one lowercase letter";
+                                    }
+                                    if (!value.match(/[0-9]/)) {
+                                        return "Your password must contain at least one number"; 
+                                    }
+                                }
+                            })}
                         />
+                        {errors.password && <p className="text-xs text-red-500">{errors.password.message}</p>}
                     </div>
                     <div className="mt-6">
                         <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" type='submit'>
