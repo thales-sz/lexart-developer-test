@@ -18,13 +18,13 @@ function Register() {
   const { data, mutate } = useMutation({
     mutationKey: ['signin'],
     mutationFn: async (data: { email: string, password: string }) => {
-      return api.post('/auth/', { ...data })
+      return api.post('/auth/signup', { ...data })
     }
   })
 
-    // if (data?.status === 201) {
-    //     router.push('/login')
-    // }
+    if (data?.status === 201) {
+        router.push('/login')
+    }
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden bg-gray-200">
