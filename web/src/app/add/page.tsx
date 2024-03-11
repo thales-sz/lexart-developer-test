@@ -96,7 +96,7 @@ function AddProduct() {
             id="price"
             placeholder="Enter the price"
             min="1"
-            max="20000"
+            max="50000"
             {...register('price', { required: true })}
             required
             type="number"
